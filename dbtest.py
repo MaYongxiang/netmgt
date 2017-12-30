@@ -12,4 +12,7 @@ if __name__ == '__main__':
     values = cursor.fetchall()
     cursor.close()
     conn.close()
-    print values
+
+    for item in values:
+        print "inx_num: %s , build_name: %s , location: %s" % (item[0],item[1],item[2])
+    print 'DONE!'

@@ -197,4 +197,5 @@ class HuaweiSwitch(object):
                 "type": item[3],
             })
 
+
         return table
