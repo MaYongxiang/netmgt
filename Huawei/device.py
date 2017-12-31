@@ -1,6 +1,7 @@
 import telnetlib
 import re
 from errors import *
+import Function
 
 
 class HuaweiSwitch(object):
@@ -76,7 +77,9 @@ class HuaweiSwitch(object):
         idx, match, text = self.expect(['>'], 2)
 
         if match is not None:
-            self.hostname = text.replace('>', '').strip()
+            tmp = text.replace('<','').strip()
+            self.hostname = tmp.replace('>', '').strip()
+
         else:
             raise HuaweiError("Unable to get device hostname")
 
@@ -191,9 +194,10 @@ class HuaweiSwitch(object):
         items  = re.findall(re_text,result)
         for item in items:
             table.append({
+                "hostname":self.hostname,
                 "mac": item[0],
                 "vlan": item[1],
-                "interface": item[2],
+                "interface": Function.function.change_int_name(item[2]),
                 "type": item[3],
             })
 
