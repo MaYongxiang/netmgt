@@ -12,6 +12,8 @@ def _get_password(**device):
         user_pass = {'username':'checklist','password':'checklist','super':'checklist','enable':'checklist'}
     elif device['use_aaa']  == 0 and device['dev_brand'] == 'huawei' and (device['dev_type'] == 'l2_switch' or 'l3_switch'):
         user_pass = {'username':device['dev_local_admin'],'password':'wlkjhj2016','super':'huaweijhj2016'}
+    else:
+        user_pass = {'username': 'checklist', 'password': 'checklist', 'super': 'checklist', 'enable': 'checklist'}
 
     return user_pass
 
